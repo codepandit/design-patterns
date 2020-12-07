@@ -14,17 +14,16 @@ class WeatherData implements Subject {
 
   registerObserver(observer: Observer): void {
     this.observers.push(observer);
-    console.log(this.observers);
   }
   removeObserver(observer: Observer): void {
     const index = this.observers.indexOf(observer);
     if (index !== -1) {
       this.observers.splice(index, 1);
     }
-    console.log(this.observers);
   }
   notifyObservers(): void {
     this.observers.forEach( (observer) => {
+      console.log(observer);
       observer.update(this.temp, this.humidity, this.pressure);
     });
   }
